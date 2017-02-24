@@ -42,7 +42,19 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class tinyproxy {
+class tinyproxy (
+  Boolean $use_epel = true,
+){
 
+  if $facts['os']['family'] == 'RedHat' and $use_epel {
+    require ::epel
+  } else {
+    include ::apt
+    require ::apt::update
+  }
+
+  package { 'tinyproxy':
+    ensure => installed,
+  }
 
 }

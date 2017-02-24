@@ -18,4 +18,8 @@ describe 'tinyproxy class' do
     result = apply_manifest(manifest)
     expect(result.exit_code).to eq 0
   end
+
+  describe package('tinyproxy') do
+    it { should be_installed }
+  end
 end
