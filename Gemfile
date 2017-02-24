@@ -7,6 +7,7 @@ gem 'puppet', puppetversion
 gem 'puppet-lint'
 gem 'puppetlabs_spec_helper'
 gem 'rspec-puppet'
+gem 'rspec-puppet-facts'
 gem 'rubocop'
 
 group :system_tests do
