@@ -1,4 +1,4 @@
-# tinyproxy
+# tinyproxy [![Build Status](https://travis-ci.org/hfm/puppet-tinyproxy.svg?branch=master)](https://travis-ci.org/hfm/puppet-tinyproxy)
 
 #### Table of Contents
 
