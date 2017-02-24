@@ -57,4 +57,10 @@ class tinyproxy (
     ensure => installed,
   }
 
+  service { 'tinyproxy':
+    ensure  => running,
+    enable  => true,
+    require => Package['tinyproxy'],
+  }
+
 }
