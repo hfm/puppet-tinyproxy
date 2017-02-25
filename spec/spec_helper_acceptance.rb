@@ -16,6 +16,10 @@ RSpec.configure do |c|
       on(host, puppet('module', 'install', 'puppetlabs-stdlib'))
       on(host, puppet('module', 'install', 'stahnma-epel'))
       on(host, puppet('module', 'install', 'puppetlabs-apt'))
+
+      if host.platform =~ /(debian|ubuntu)/
+        apply_manifest_on(host, "package { 'net-tools': ensure => installed }")
+      end
     end
   end
 end
