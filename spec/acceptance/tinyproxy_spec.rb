@@ -37,4 +37,19 @@ describe 'tinyproxy class' do
     it { should be_enabled }
     it { should be_running }
   end
+
+  proc_user = case os[:family]
+         when 'redhat' then 'tinyproxy'
+         when 'debian' then 'nobody'
+         when 'ubuntu' then 'nobody'
+         end
+
+  describe process('tinyproxy') do
+    it { should be_running }
+    its(:user) { should eq proc_user }
+  end
+
+  describe port(8888) do
+    it { should be_listening.with('tcp') }
+  end
 end
