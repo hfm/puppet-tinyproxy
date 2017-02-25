@@ -45,6 +45,7 @@
 class tinyproxy (
   Boolean                   $use_epel       = true,
   String                    $package_ensure = 'installed',
+  String                    $config_ensure  = 'file',
   Enum['running','stopped'] $service_ensure = 'running',
   Boolean                   $service_enable = true,
 ){
@@ -53,6 +54,10 @@ class tinyproxy (
     use_epel       => $use_epel,
     package_ensure => $package_ensure,
   } ->
+
+  class { 'tinyproxy::config':
+    config_ensure => $config_ensure,
+  } ~>
 
   class { 'tinyproxy::service':
     service_ensure => $service_ensure,

@@ -23,6 +23,16 @@ describe 'tinyproxy class' do
     it { should be_installed }
   end
 
+  config_path = case os[:family]
+                when 'redhat' then '/etc/tinyproxy/tinyproxy.conf'
+                when 'debian' then '/etc/tinyproxy.conf'
+                when 'ubuntu' then '/etc/tinyproxy.conf'
+                end
+
+  describe file(config_path) do
+    it { should be_file }
+  end
+
   describe service('tinyproxy') do
     it { should be_enabled }
     it { should be_running }
