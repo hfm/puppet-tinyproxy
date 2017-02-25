@@ -28,9 +28,9 @@ The tinyproxy module handles installing, configuring, and running [tinyproxy](ht
 
 The tinyproxy module requires the following puppet modules:
 
-- [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib): version 4.0 or newer.
-- [puppetlabs-apt](https://forge.puppet.com/puppetlabs/apt): version 2.0 or newer (only Debian-based distributions).
-- [stahnma-epel](https://forge.puppet.com/stahnma/epel): version 1.0 or newer (only RedHat-based distributions).
+- [puppetlabs-stdlib](https://forge.puppet.com/puppetlabs/stdlib) (>= 4.0.0 < 5.0.0)
+- [puppetlabs-apt](https://forge.puppet.com/puppetlabs/apt) (>= 2.0.0 < 3.0.0) (only Debian-based distributions)
+- [stahnma-epel](https://forge.puppet.com/stahnma/epel) (>= 1.0.0 < 2.0.0) (only RedHat-based distributions)
 
 ### Beginning with tinyproxy
 
