@@ -8,6 +8,7 @@ class tinyproxy::config (
     default  => '/etc/tinyproxy/tinyproxy.conf',
   }
 
+  # Template uses
   $tinyproxy_user = $facts['os']['family'] ? {
     'Debian' => 'nobody',
     'RedHat' => 'tinyproxy',
