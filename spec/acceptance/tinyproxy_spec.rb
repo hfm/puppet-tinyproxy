@@ -15,6 +15,10 @@ describe 'tinyproxy class' do
     expect(apply_manifest(manifest).exit_code).to be_zero
   end
 
+  describe yumrepo('epel'), if: os[:family] == 'redhat' do
+    it { should be_enabled }
+  end
+
   describe package('tinyproxy') do
     it { should be_installed }
   end
