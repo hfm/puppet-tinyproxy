@@ -49,29 +49,14 @@ class tinyproxy (
   Boolean                   $service_enable = true,
 ){
 
-  case $facts['os']['family'] {
-    'RedHat': {
-      if $use_epel {
-        require ::epel
-      }
-    }
-    'Debian': {
-      include ::apt
-      require ::apt::update
-    }
-    default: {
-      fail("Module ${module_name} is not supported on ${facts['os']['family']}")
-    }
-  }
+  class { 'tinyproxy::install':
+    use_epel       => $use_epel,
+    package_ensure => $package_ensure,
+  } ->
 
-  package { 'tinyproxy':
-    ensure => $package_ensure,
-  }
-
-  service { 'tinyproxy':
-    ensure  => $service_enable,
-    enable  => $service_enable,
-    require => Package['tinyproxy'],
+  class { 'tinyproxy::service':
+    service_ensure => $service_ensure,
+    service_enable => $service_enable,
   }
 
 }
