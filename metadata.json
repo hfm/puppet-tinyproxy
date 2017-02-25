@@ -7,6 +7,7 @@
   "source": "https://github.com/hfm/puppet-tinyproxy",
   "project_page": "https://github.com/hfm/puppet-tinyproxy",
   "issues_url": "https://github.com/hfm/puppet-tinyproxy/issues",
+  "tags": ["tinyproxy", "forward proxy"],
   "requirements": [
     {
       "name": "puppet",
