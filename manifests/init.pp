@@ -45,7 +45,7 @@
 class tinyproxy (
   Boolean                   $use_epel       = true,
   String                    $package_ensure = 'installed',
-  String                    $config_ensure  = 'file',
+  Enum['file', 'absent']    $config_ensure  = 'file',
   Enum['running','stopped'] $service_ensure = 'running',
   Boolean                   $service_enable = true,
 ){

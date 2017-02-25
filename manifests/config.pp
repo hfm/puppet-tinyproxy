@@ -1,5 +1,5 @@
 class tinyproxy::config (
-  String $config_ensure,
+  Enum['file', 'absent'] $config_ensure,
 ){
 
   $config_path = $facts['os']['family'] ? {
