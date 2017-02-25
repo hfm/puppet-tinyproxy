@@ -11,5 +11,6 @@ gem 'rspec-puppet-facts'
 gem 'rubocop'
 
 gem 'puppet-blacksmith', group: :development
+gem 'parallel_tests', group: :development
 
 gem 'beaker-rspec', group: :system_tests
