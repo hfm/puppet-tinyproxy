@@ -3,6 +3,10 @@ require 'puppet-lint/tasks/puppet-lint'
 require 'metadata-json-lint/rake_task'
 require 'rubocop/rake_task'
 RuboCop::RakeTask.new
+begin
+  require 'puppet_blacksmith/rake_tasks'
+rescue LoadError
+end
 
 desc 'Validate manifests, templates, and ruby files'
 task :validate do

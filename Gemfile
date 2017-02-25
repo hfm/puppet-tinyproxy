@@ -10,6 +10,6 @@ gem 'rspec-puppet'
 gem 'rspec-puppet-facts'
 gem 'rubocop'
 
-group :system_tests do
-  gem 'beaker-rspec'
-end
+gem 'puppet-blacksmith', group: :development
+
+gem 'beaker-rspec', group: :system_tests
