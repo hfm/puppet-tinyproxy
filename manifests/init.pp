@@ -43,7 +43,10 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class tinyproxy (
-  Boolean $use_epel = true,
+  Boolean                   $use_epel       = true,
+  String                    $package_ensure = 'installed',
+  Enum['running','stopped'] $service_ensure = 'running',
+  Boolean                   $service_enable = true,
 ){
 
   if $facts['os']['family'] == 'RedHat' and $use_epel {
@@ -54,12 +57,12 @@ class tinyproxy (
   }
 
   package { 'tinyproxy':
-    ensure => installed,
+    ensure => $package_ensure,
   }
 
   service { 'tinyproxy':
-    ensure  => running,
-    enable  => true,
+    ensure  => $service_enable,
+    enable  => $service_enable,
     require => Package['tinyproxy'],
   }
 
