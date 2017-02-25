@@ -1,13 +1,16 @@
 {
   "name": "hfm-tinyproxy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "hfm",
   "summary": "Install, configures, and manages tinyproxy.",
   "license": "MIT",
   "source": "https://github.com/hfm/puppet-tinyproxy",
   "project_page": "https://github.com/hfm/puppet-tinyproxy",
   "issues_url": "https://github.com/hfm/puppet-tinyproxy/issues",
-  "tags": ["tinyproxy", "forward proxy"],
+  "tags": [
+    "tinyproxy",
+    "forward proxy"
+  ],
   "requirements": [
     {
       "name": "puppet",
