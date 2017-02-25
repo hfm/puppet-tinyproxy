@@ -9,13 +9,13 @@ class tinyproxy::config (
   }
 
   # Template uses
-  $tinyproxy_user = $facts['os']['family'] ? {
+  $user = $facts['os']['family'] ? {
     'Debian' => 'nobody',
     'RedHat' => 'tinyproxy',
     default  => 'tinyproxy',
   }
 
-  $tinyproxy_group = $facts['os']['family'] ? {
+  $group = $facts['os']['family'] ? {
     'Debian' => 'nogroup',
     'RedHat' => 'tinyproxy',
     default  => 'tinyproxy',
