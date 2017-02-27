@@ -69,7 +69,18 @@ class tinyproxy (
   } ->
 
   class { 'tinyproxy::config':
-    config_ensure => $config_ensure,
+    config_ensure          => $config_ensure,
+    port                   => $port,
+    listen                 => $listen,
+    bind                   => $bind,
+    bind_same              => $bind_same,
+    timeout                => $timeout,
+    max_clients            => $max_clients,
+    min_space_servers      => $min_space_servers,
+    max_space_servers      => $max_space_servers,
+    start_servers          => $start_servers,
+    max_requests_per_child => $max_requests_per_child,
+    log_level              => $log_level,
   } ~>
 
   class { 'tinyproxy::service':
