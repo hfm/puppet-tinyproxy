@@ -20,33 +20,40 @@ Group <%= @group %>
 # that should you choose to run on a port lower than 1024 you will need
 # to start tinyproxy using root.
 #
-Port 8888
+Port <%= @port %>
 
 #
 # Listen: If you have multiple interfaces this allows you to bind to
 # only one. If this is commented out, tinyproxy will bind to all
 # interfaces present.
 #
-#Listen 192.168.0.1
+<%- if @listen -%>
+Listen <%= @listen %>
+<%- end -%>
 
 #
 # Bind: This allows you to specify which interface will be used for
 # outgoing connections.  This is useful for multi-home'd machines where
 # you want all traffic to appear outgoing from one particular interface.
 #
-#Bind 192.168.0.1
+<%- if @bind -%>
+Bind <%= @bind %>
+<%- end -%>
 
 #
 # BindSame: If enabled, tinyproxy will bind the outgoing connection to the
 # ip address of the incoming connection.
 #
+<%- if @bind_same -%>
+BindSame <%= @bind_same %>
+<%- end -%>
 #BindSame yes
 
 #
 # Timeout: The maximum number of seconds of inactivity a connection is
 # allowed to have before it is closed by tinyproxy.
 #
-Timeout 600
+Timeout <%= @timeout %>
 
 #
 # ErrorFile: Defines the HTML file to send when a given HTTP error
@@ -116,7 +123,7 @@ LogFile "/var/log/tinyproxy/tinyproxy.log"
 # LogLevel was set to Warning, then all log messages from Warning to
 # Critical would be output, but Notice and below would be suppressed.
 #
-LogLevel Info
+LogLevel <%= @log_level %>
 
 #
 # PidFile: Write the PID of the main tinyproxy thread to this file so it
@@ -173,7 +180,7 @@ PidFile "/var/run/tinyproxy/tinyproxy.pid"
 # be created. In other words, only MaxClients number of clients can be
 # connected at the same time.
 #
-MaxClients 100
+MaxClients <%= @max_clients %>
 
 #
 # MinSpareServers/MaxSpareServers: These settings set the upper and
@@ -183,13 +190,13 @@ MaxClients 100
 # server processes will be spawned.  If the number of servers exceeds
 # MaxSpareServers then the extras will be killed off.
 #
-MinSpareServers 5
-MaxSpareServers 20
+MinSpareServers <%= @min_spare_servers %>
+MaxSpareServers <%= @max_spare_servers %>
 
 #
 # StartServers: The number of servers to start initially.
 #
-StartServers 10
+StartServers <%= @start_servers %>
 
 #
 # MaxRequestsPerChild: The number of connections a thread will handle
@@ -197,7 +204,7 @@ StartServers 10
 # disables thread reaping. If you do notice problems with memory
 # leakage, then set this to something like 10000.
 #
-MaxRequestsPerChild 0
+MaxRequestsPerChild <%= @max_requests_per_child %>
 
 #
 # Allow: Customization of authorization controls. If there are any
