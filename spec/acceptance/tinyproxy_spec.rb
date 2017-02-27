@@ -50,6 +50,6 @@ describe 'tinyproxy class' do
   end
 
   describe port(8888) do
-    it { should be_listening.with('tcp') }
+    it { should be_listening.on('0.0.0.0').with('tcp') }
   end
 end
