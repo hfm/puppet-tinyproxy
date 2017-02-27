@@ -4,7 +4,7 @@ class tinyproxy::service (
 ){
 
   service { 'tinyproxy':
-    ensure => $service_enable,
+    ensure => $service_ensure,
     enable => $service_enable,
   }
 
