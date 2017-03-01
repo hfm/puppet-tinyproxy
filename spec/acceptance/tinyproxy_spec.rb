@@ -31,11 +31,9 @@ describe 'tinyproxy class' do
 
   describe file(config_path) do
     it { should be_file }
-    its(:content) { should match /^Bind\s+(\d+\.){3}\d+$/ }
-    its(:content) { should match /^BindSame\s+yes$/ }
     its(:content) { should match /^Timeout\s+\d+$/ }
     its(:content) { should match /^LogLevel\s+Info$/ }
-    its(:content) { should match /^MaxClients\s+$\d+/ }
+    its(:content) { should match /^MaxClients\s+\d+/ }
     its(:content) { should match /^MinSpareServers\s+\d+$/ }
     its(:content) { should match /^MaxSpareServers\s+\d+$/ }
     its(:content) { should match /^StartServers\s+\d+$/ }
