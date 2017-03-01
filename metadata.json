@@ -68,5 +68,5 @@
       ]
     }
   ],
-  "data_provider": null
+  "data_provider": "hiera"
 }
