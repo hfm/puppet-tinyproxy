@@ -1,0 +1,3 @@
+tinyproxy::config::config_path: '/etc/tinyproxy/tinyproxy.conf'
+tinyproxy::config::user: 'tinyproxy'
+tinyproxy::config::group: 'tinyproxy'
