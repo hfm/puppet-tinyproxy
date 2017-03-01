@@ -1,9 +1,9 @@
 class tinyproxy::config (
   Enum['file', 'absent'] $config_ensure,
   Integer $port,
-  String $listen,
-  String $bind,
-  Boolean $bind_same,
+  Optional[String] $listen,
+  Optional[String] $bind,
+  Optional[Boolean] $bind_same,
   Integer $timeout,
   Integer $max_clients,
   Integer $min_space_servers,

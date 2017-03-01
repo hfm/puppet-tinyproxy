@@ -48,9 +48,9 @@ class tinyproxy (
 
   Enum['file', 'absent']    $config_ensure  = 'file',
   Integer $port = 8888,
-  Optional[String] $listen,
-  Optional[String] $bind,
-  Optional[Boolean] $bind_same,
+  Optional[String] $listen = undef,
+  Optional[String] $bind = undef,
+  Optional[Boolean] $bind_same = undef,
   Integer $timeout = 600,
   Integer $max_clients = 100,
   Integer $min_space_servers = 5,
