@@ -43,11 +43,24 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class tinyproxy (
-  Boolean                   $use_epel       = true,
-  String                    $package_ensure = 'installed',
-  Enum['file', 'absent']    $config_ensure  = 'file',
-  Enum['running','stopped'] $service_ensure = 'running',
-  Boolean                   $service_enable = true,
+  Boolean $use_epel,
+  String  $package_ensure,
+
+  Enum['file', 'absent'] $config_ensure,
+  Integer $port,
+  Optional[String] $listen,
+  Optional[String] $bind,
+  Optional[Boolean] $bind_same,
+  Integer $timeout,
+  Integer $max_clients,
+  Integer $min_spare_servers,
+  Integer $max_spare_servers,
+  Integer $start_servers,
+  Integer $max_requests_per_child,
+  Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
+
+  Enum['running','stopped'] $service_ensure,
+  Boolean                   $service_enable,
 ){
 
   class { 'tinyproxy::install':
@@ -56,7 +69,18 @@ class tinyproxy (
   } ->
 
   class { 'tinyproxy::config':
-    config_ensure => $config_ensure,
+    config_ensure          => $config_ensure,
+    port                   => $port,
+    listen                 => $listen,
+    bind                   => $bind,
+    bind_same              => $bind_same,
+    timeout                => $timeout,
+    max_clients            => $max_clients,
+    min_spare_servers      => $min_spare_servers,
+    max_spare_servers      => $max_spare_servers,
+    start_servers          => $start_servers,
+    max_requests_per_child => $max_requests_per_child,
+    log_level              => $log_level,
   } ~>
 
   class { 'tinyproxy::service':

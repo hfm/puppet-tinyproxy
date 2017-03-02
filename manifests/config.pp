@@ -1,5 +1,16 @@
 class tinyproxy::config (
   Enum['file', 'absent'] $config_ensure,
+  Integer $port,
+  Optional[String] $listen,
+  Optional[String] $bind,
+  Optional[Boolean] $bind_same,
+  Integer $timeout,
+  Integer $max_clients,
+  Integer $min_spare_servers,
+  Integer $max_spare_servers,
+  Integer $start_servers,
+  Integer $max_requests_per_child,
+  Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
 ){
 
   $config_path = $facts['os']['family'] ? {

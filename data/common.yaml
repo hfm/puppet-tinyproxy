@@ -1,0 +1,18 @@
+tinyproxy::use_epel: true
+tinyproxy::package_ensure: 'installed'
+
+tinyproxy::config_ensure: 'file'
+tinyproxy::port: 8888
+tinyproxy::listen: null
+tinyproxy::bind: null
+tinyproxy::bind_same: null
+tinyproxy::timeout: 600
+tinyproxy::max_clients: 100
+tinyproxy::min_spare_servers: 5
+tinyproxy::max_spare_servers: 20
+tinyproxy::start_servers: 10
+tinyproxy::max_requests_per_child: 0
+tinyproxy::log_level: 'Info'
+
+tinyproxy::service_ensure: 'running'
+tinyproxy::service_enable: true

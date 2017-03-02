@@ -14,7 +14,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=4.0.0 < 5.0.0"
+      "version_requirement": ">=4.9.0 < 5.0.0"
     }
   ],
   "dependencies": [
@@ -68,5 +68,5 @@
       ]
     }
   ],
-  "data_provider": null
+  "data_provider": "hiera"
 }

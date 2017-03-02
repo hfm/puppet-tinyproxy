@@ -31,6 +31,13 @@ describe 'tinyproxy class' do
 
   describe file(config_path) do
     it { should be_file }
+    its(:content) { should match /^Timeout\s+\d+$/ }
+    its(:content) { should match /^LogLevel\s+Info$/ }
+    its(:content) { should match /^MaxClients\s+\d+/ }
+    its(:content) { should match /^MinSpareServers\s+\d+$/ }
+    its(:content) { should match /^MaxSpareServers\s+\d+$/ }
+    its(:content) { should match /^StartServers\s+\d+$/ }
+    its(:content) { should match /^MaxRequestsPerChild\s+\d+$/ }
   end
 
   describe service('tinyproxy') do
@@ -50,6 +57,6 @@ describe 'tinyproxy class' do
   end
 
   describe port(8888) do
-    it { should be_listening.with('tcp') }
+    it { should be_listening.on('0.0.0.0').with('tcp') }
   end
 end
