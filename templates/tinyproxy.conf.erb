@@ -71,7 +71,7 @@ ErrorFile <%= number %> "<%= location %>"
 # HTML file defined with an ErrorFile keyword for the HTTP error
 # that has occured.
 #
-DefaultErrorFile "/usr/share/tinyproxy/default.html"
+DefaultErrorFile "<%= @default_error_file %>"
 
 #
 # StatHost: This configures the host name or IP address that is treated
