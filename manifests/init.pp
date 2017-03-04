@@ -58,6 +58,7 @@ class tinyproxy (
   Integer $start_servers,
   Integer $max_requests_per_child,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
+  Variant[Integer, Array[Integer]] $connect_port,
 
   Enum['running','stopped'] $service_ensure,
   Boolean                   $service_enable,
@@ -81,6 +82,7 @@ class tinyproxy (
     start_servers          => $start_servers,
     max_requests_per_child => $max_requests_per_child,
     log_level              => $log_level,
+    connect_port           => $connect_port,
   } ~>
 
   class { 'tinyproxy::service':

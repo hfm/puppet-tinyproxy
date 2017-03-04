@@ -13,6 +13,9 @@ tinyproxy::max_spare_servers: 20
 tinyproxy::start_servers: 10
 tinyproxy::max_requests_per_child: 0
 tinyproxy::log_level: 'Info'
+tinyproxy::connect_port:
+  - 443
+  - 563
 
 tinyproxy::service_ensure: 'running'
 tinyproxy::service_enable: true

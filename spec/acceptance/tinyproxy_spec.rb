@@ -38,6 +38,8 @@ describe 'tinyproxy class' do
     its(:content) { should match /^MaxSpareServers\s+\d+$/ }
     its(:content) { should match /^StartServers\s+\d+$/ }
     its(:content) { should match /^MaxRequestsPerChild\s+\d+$/ }
+    its(:content) { should match /^ConnectPort\s+443$/ }
+    its(:content) { should match /^ConnectPort\s+563$/ }
   end
 
   describe service('tinyproxy') do

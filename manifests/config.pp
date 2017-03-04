@@ -11,6 +11,7 @@ class tinyproxy::config (
   Integer $start_servers,
   Integer $max_requests_per_child,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
+  Variant[Integer, Array[Integer]] $connect_port,
 ){
 
   $config_path = $facts['os']['family'] ? {
