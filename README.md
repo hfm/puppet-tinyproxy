@@ -83,6 +83,18 @@ tinyproxy::service_enable: true
 - `use_epel`: Whether epel repository should be installed. Type is Boolean. Default: true.
 - `package_ensure`: What state the tinyproxy package should be in. Type is String. Default: 'installed'.
 - `config_ensure`: Whether the tinyproxy.conf should exist. Type is Enum['file', 'absent']. Default: 'file'.
+- `port`:Specify the port which tinyproxy will listen on. Type is Integer. Default: 8888.
+- `listen`: Allow you to bind to an interface. Type is Optional[String]. Default: undef.
+- `bind`: Specify which interface will be used for outgoing connections. Type is Optional[String]. Default: undef.
+- `bind_same`: Whether tinyproxy will bind the outgoing connection to the ip address of the incoming connection. Type is Optional[Boolean]. Default: undef.
+- `timeout`: Specify a timeout of a connection. Type is Integer. Default: 600.
+- `max_clients`: Specify maximum number of clients can be connected at the same time. Type is Integer. Default: 100.
+- `min_spare_servers`: Specify the lower limit for the number of spare servers which should be available. Type is Integer. Default: 5.
+- `max_spare_servers`: Specify the upper limit for the number of spare servers which should be available. Type is Integer. Default: 20.
+- `start_servers`: Specify the number of servers to start initially. Type is Integer. Default: 10.
+- `max_requests_per_child`: Specify the number of connections a thread will handle before it's killed. Type is Integer. Default: 0.
+- `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
+- `connect_port`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Variant[Integer, Array[Integer]]. Default: [443, 563].
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.
 - `service_enable`: Whether a service should be enabled to start at boot. Type is Boolean. Default: true.
 
