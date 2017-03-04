@@ -7,6 +7,7 @@ tinyproxy::listen: null
 tinyproxy::bind: null
 tinyproxy::bind_same: null
 tinyproxy::timeout: 600
+tinyproxy::error_files: null
 tinyproxy::max_clients: 100
 tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20

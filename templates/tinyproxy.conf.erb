@@ -62,11 +62,9 @@ Timeout <%= @timeout %>
 #   /usr/share/tinyproxy
 #   /etc/tinyproxy
 #
-#ErrorFile 404 "/usr/share/tinyproxy/404.html"
-#ErrorFile 400 "/usr/share/tinyproxy/400.html"
-#ErrorFile 503 "/usr/share/tinyproxy/503.html"
-#ErrorFile 403 "/usr/share/tinyproxy/403.html"
-#ErrorFile 408 "/usr/share/tinyproxy/408.html"
+<%- @error_files.each_pair do |number, location| -%>
+ErrorFile <%= number %> "<%= location %>"
+<%- end if @error_files -%>
 
 #
 # DefaultErrorFile: The HTML file that gets sent if there is no

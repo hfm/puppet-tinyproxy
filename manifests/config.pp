@@ -5,6 +5,7 @@ class tinyproxy::config (
   Optional[String] $bind,
   Optional[Boolean] $bind_same,
   Integer $timeout,
+  Optional[Hash[Integer, String]] $error_files,
   Integer $max_clients,
   Integer $min_spare_servers,
   Integer $max_spare_servers,

@@ -88,6 +88,7 @@ tinyproxy::service_enable: true
 - `bind`: Specify which interface will be used for outgoing connections. Type is Optional[String]. Default: undef.
 - `bind_same`: Whether tinyproxy will bind the outgoing connection to the ip address of the incoming connection. Type is Optional[Boolean]. Default: undef.
 - `timeout`: Specify a timeout of a connection. Type is Integer. Default: 600.
+- `error_files`: Specify the HTML file to send when a given HTTP error occurs. Type is Optional[Hash[Integer, String]]. Default: undef.
 - `max_clients`: Specify maximum number of clients can be connected at the same time. Type is Integer. Default: 100.
 - `min_spare_servers`: Specify the lower limit for the number of spare servers which should be available. Type is Integer. Default: 5.
 - `max_spare_servers`: Specify the upper limit for the number of spare servers which should be available. Type is Integer. Default: 20.
