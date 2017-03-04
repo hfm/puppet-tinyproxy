@@ -293,8 +293,9 @@ ViaProxyName "tinyproxy"
 #
 # The following two ports are used by SSL.
 #
-ConnectPort 443
-ConnectPort 563
+<%- if @connect_port; [@connect_port].flatten.each do |port| -%>
+ConnectPort <%= port %>
+<%- end end -%>
 
 #
 # Configure one or more ReversePath directives to enable reverse proxy
