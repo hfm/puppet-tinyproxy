@@ -135,7 +135,7 @@ PidFile "<%= @pid_file %>"
 # XTinyproxy: Tell Tinyproxy to include the X-Tinyproxy header, which
 # contains the client's IP address.
 #
-#XTinyproxy Yes
+XTinyproxy <%= @use_xtinyproxy ? 'Yes' : 'No' %>
 
 #
 # Upstream:

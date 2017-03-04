@@ -12,6 +12,7 @@ class tinyproxy::config (
   Optional[String] $log_file,
   Boolean $use_syslog,
   String $pid_file,
+  Boolean $use_xtinyproxy,
   Integer $max_clients,
   Integer $min_spare_servers,
   Integer $max_spare_servers,

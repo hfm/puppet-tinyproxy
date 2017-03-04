@@ -14,6 +14,7 @@ tinyproxy::stat_file: "/usr/share/tinyproxy/stats.html"
 tinyproxy::log_file: "/var/log/tinyproxy/tinyproxy.log"
 tinyproxy::use_syslog: false
 tinyproxy::pid_file: "/var/run/tinyproxy/tinyproxy.pid"
+tinyproxy::use_xtinyproxy: false
 tinyproxy::max_clients: 100
 tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20
