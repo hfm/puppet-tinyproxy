@@ -11,6 +11,7 @@ tinyproxy::error_files: null
 tinyproxy::default_error_file: "/usr/share/tinyproxy/default.html"
 tinyproxy::stat_host: null
 tinyproxy::stat_file: "/usr/share/tinyproxy/stats.html"
+tinyproxy::log_file: "/var/log/tinyproxy/tinyproxy.log"
 tinyproxy::max_clients: 100
 tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20

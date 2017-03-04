@@ -92,6 +92,7 @@ tinyproxy::service_enable: true
 - `default_error_file`: Specify the default Error HTML file. Type is String. Default: '/usr/share/tinyproxy/default.html'.
 - `stat_host`: Specify the stat host. Type is Optional[String]. Default: undef.
 - `stat_file`: Specify the HTML file for the stat host. Type is String. Default: '/usr/share/tinyproxy/stats.html'.
+- `log_file`: Specify the log file. Type is String. Default: '/var/log/tinyproxy/tinyproxy.log'.
 - `max_clients`: Specify maximum number of clients can be connected at the same time. Type is Integer. Default: 100.
 - `min_spare_servers`: Specify the lower limit for the number of spare servers which should be available. Type is Integer. Default: 5.
 - `max_spare_servers`: Specify the upper limit for the number of spare servers which should be available. Type is Integer. Default: 20.

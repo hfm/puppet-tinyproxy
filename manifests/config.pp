@@ -9,6 +9,7 @@ class tinyproxy::config (
   String $default_error_file,
   Optional[String] $stat_host,
   String $stat_file,
+  String $log_file,
   Integer $max_clients,
   Integer $min_spare_servers,
   Integer $max_spare_servers,
