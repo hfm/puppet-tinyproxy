@@ -97,14 +97,16 @@ StatFile "<%= @stat_file %>"
 # and enable the Syslog directive.  These directives are mutually
 # exclusive.
 #
+<%- if @log_file -%>
 LogFile "<%= @log_file %>"
+<%- end -%>
 
 #
 # Syslog: Tell tinyproxy to use syslog instead of a logfile.  This
 # option must not be enabled if the Logfile directive is being used.
 # These two directives are mutually exclusive.
 #
-#Syslog On
+Syslog <%= @syslog ? 'On' : 'Off' %>
 
 #
 # LogLevel:

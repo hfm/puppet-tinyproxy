@@ -9,7 +9,8 @@ class tinyproxy::config (
   String $default_error_file,
   Optional[String] $stat_host,
   String $stat_file,
-  String $log_file,
+  Optional[String] $log_file,
+  Boolean $use_syslog,
   Integer $max_clients,
   Integer $min_spare_servers,
   Integer $max_spare_servers,
@@ -18,6 +19,10 @@ class tinyproxy::config (
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Variant[Integer, Array[Integer]] $connect_port,
 ){
+
+  if $log_file != undef and $use_syslog == true {
+    fail('$use_syslog and $log_logfile are mutually exclusive.')
+  }
 
   $config_path = $facts['os']['family'] ? {
     'Debian' => '/etc/tinyproxy.conf',
