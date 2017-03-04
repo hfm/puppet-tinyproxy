@@ -9,7 +9,8 @@
   "issues_url": "https://github.com/hfm/puppet-tinyproxy/issues",
   "tags": [
     "tinyproxy",
-    "forward proxy"
+    "forward proxy",
+    "http/https proxy"
   ],
   "requirements": [
     {
