@@ -129,7 +129,7 @@ LogLevel <%= @log_level %>
 # PidFile: Write the PID of the main tinyproxy thread to this file so it
 # can be used for signalling purposes.
 #
-PidFile "/var/run/tinyproxy/tinyproxy.pid"
+PidFile "<%= @pid_file %>"
 
 #
 # XTinyproxy: Tell Tinyproxy to include the X-Tinyproxy header, which
