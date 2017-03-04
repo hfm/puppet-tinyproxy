@@ -80,8 +80,9 @@ DefaultErrorFile "<%= @default_error_file %>"
 # forwarding the request to that host.  The default value of StatHost is
 # tinyproxy.stats.
 #
-#StatHost "tinyproxy.stats"
-#
+<%- if @stat_host -%>
+StatHost <%= @stat_host %>
+<%- end -%>
 
 #
 # StatFile: The HTML file that gets sent when a request is made
