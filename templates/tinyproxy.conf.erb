@@ -242,7 +242,9 @@ Deny <%= @deny %>
 # Tinyproxy makes. Note that this option will not work for HTTPS
 # traffic, as Tinyproxy has no control over what headers are exchanged.
 #
-#AddHeader "X-My-Header" "Powered by Tinyproxy"
+<%- @add_headers.each_pair do |name, value| -%>
+AddHeader "<%= name %>" "<%= value %>"
+<%- end if @add_headers -%>
 
 #
 # ViaProxyName: The "Via" header is required by the HTTP RFC, but using

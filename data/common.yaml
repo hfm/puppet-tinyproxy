@@ -25,6 +25,7 @@ tinyproxy::start_servers: 10
 tinyproxy::max_requests_per_child: 0
 tinyproxy::allow: '127.0.0.1'
 tinyproxy::deny: null
+tinyproxy::add_headers: null
 tinyproxy::via_proxy_name: 'tinyproxy'
 tinyproxy::log_level: 'Info'
 tinyproxy::connect_port:
