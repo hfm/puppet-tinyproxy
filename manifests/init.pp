@@ -72,6 +72,7 @@ class tinyproxy (
   Optional[String] $deny,
   Optional[Hash[String, String]] $add_headers,
   String $via_proxy_name,
+  Boolean $disable_via_header,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Variant[Integer, Array[Integer]] $connect_port,
 
@@ -111,6 +112,7 @@ class tinyproxy (
     deny                   => $deny,
     add_headers            => $add_headers,
     via_proxy_name         => $via_proxy_name,
+    disable_via_header     => $disable_via_header,
     log_level              => $log_level,
     connect_port           => $connect_port,
   } ~>

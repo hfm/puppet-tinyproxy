@@ -261,7 +261,7 @@ ViaProxyName "<%= @via_proxy_name %>"
 # header, so by enabling this option, you break compliance.
 # Don't disable the Via header unless you know what you are doing...
 #
-#DisableViaHeader Yes
+DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
 
 #
 # Filter: This allows you to specify the location of the filter file.

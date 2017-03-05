@@ -108,6 +108,7 @@ tinyproxy::service_enable: true
 - `deny`: Specify authorization control which clients are denied to access Tinyproxy. Type is Optional[String]. Default: undef.
 - `add_headers`: Specify additional headers. Type is Optional[Hash[String, String]]. Default: undef.
 - `via_proxy_name`: Specify the "Via" header. Type is String. Default: 'tinyproxy'.
+- `disable_via_header`: Whether tinyproxy disables the "Via" header. Type is Boolean. Default: false.
 - `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
 - `connect_port`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Variant[Integer, Array[Integer]]. Default: [443, 563].
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.

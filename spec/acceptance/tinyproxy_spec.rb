@@ -53,6 +53,7 @@ describe 'tinyproxy class' do
     its(:content) { should match /^MaxRequestsPerChild\s+\d+$/ }
     its(:content) { should match /^Allow\s+127\.0\.0\.1$/ }
     its(:content) { should match /^AddHeader\s+"X-My-Header" "Powored by Tinyproxy"$/ }
+    its(:content) { should match /^DisableViaHeader\s+No$/ }
     its(:content) { should match /^ConnectPort\s+443$/ }
     its(:content) { should match /^ConnectPort\s+563$/ }
   end
