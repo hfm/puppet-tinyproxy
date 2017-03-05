@@ -3,7 +3,13 @@ require 'spec_helper_acceptance'
 describe 'tinyproxy class' do
   let(:manifest) do
     <<-EOS
-      include ::tinyproxy
+      class { 'tinyproxy':
+        default_upstreams => ['internal.example.com:80'],
+        upstreams    => {
+          'testproxy:8008' => ['.test.domain.invalid', '192.168.128.0/255.255.254.0'],
+        },
+        no_upstreams => ['www.example.com'],
+      }
     EOS
   end
 
@@ -33,6 +39,10 @@ describe 'tinyproxy class' do
     it { should be_file }
     its(:content) { should match /^Timeout\s+\d+$/ }
     its(:content) { should match /^LogLevel\s+Info$/ }
+    its(:content) { should match /^upstream\s+internal.example.com:80$/ }
+    its(:content) { should match /^upstream\s+testproxy:8008 ".test.domain.invalid"$/ }
+    its(:content) { should match /^upstream\s+testproxy:8008 "192.168.128.0\/255.255.254.0"$/ }
+    its(:content) { should match /^no upstream\s+"www.example.com"$/ }
     its(:content) { should match /^MaxClients\s+\d+/ }
     its(:content) { should match /^MinSpareServers\s+\d+$/ }
     its(:content) { should match /^MaxSpareServers\s+\d+$/ }

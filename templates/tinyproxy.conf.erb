@@ -173,7 +173,23 @@ XTinyproxy <%= @use_xtinyproxy ? 'Yes' : 'No' %>
 #  IP/bits  matches network/mask
 #  IP/mask  matches network/mask
 #
-#Upstream some.remote.proxy:port
+<%- @default_upstreams.each do |host_port| -%>
+upstream <%= host_port %>
+<%- end if @default_upstreams -%>
+<%-
+  if @upstreams
+    @upstreams.each_pair do |host_port, site_specs|
+      [site_specs].flatten.each do |site_spec|
+-%>
+upstream <%= host_port %> "<%= site_spec %>"
+<%-
+      end
+    end
+  end
+-%>
+<%- @no_upstreams.each do |site_spec| -%>
+no upstream "<%= site_spec %>"
+<%- end if @no_upstreams -%>
 
 #
 # MaxClients: This is the absolute highest number of threads which will

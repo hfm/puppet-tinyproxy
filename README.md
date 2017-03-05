@@ -96,6 +96,9 @@ tinyproxy::service_enable: true
 - `use_syslog`: Whether tinyproxy uses syslog instead of a log file. This parameter and `$log_file` are mutually exclusive. Type is Boolean. Default: false.
 - `pid_file`: Specify the pid file. Type is String. Default: '/var/run/tinyproxy/tinyproxy.pid'.
 - `use_xtinyproxy`: Whether tinyproxy include the 'X-Tinyproxy' header. Type is Boolean. Default: false.
+- `default_upstreams`: Specify a set of rules for deciding whether the default upstream proxie servers are to be used. Type is Optional[Array[String]]. Default: undef.
+- `upstreams`: Specify a set of rules for deciding whether upstream proxie servers are to be used. Type is Optional[Hash[String, String]]. Default: undef.
+- `no_upstreams`: Specify no upstream proxy for internal websites and unqualified hosts. Type is Optional[Array[String]]. Default: undef.
 - `max_clients`: Specify maximum number of clients can be connected at the same time. Type is Integer. Default: 100.
 - `min_spare_servers`: Specify the lower limit for the number of spare servers which should be available. Type is Integer. Default: 5.
 - `max_spare_servers`: Specify the upper limit for the number of spare servers which should be available. Type is Integer. Default: 20.

@@ -15,6 +15,9 @@ tinyproxy::log_file: "/var/log/tinyproxy/tinyproxy.log"
 tinyproxy::use_syslog: false
 tinyproxy::pid_file: "/var/run/tinyproxy/tinyproxy.pid"
 tinyproxy::use_xtinyproxy: false
+tinyproxy::default_upstreams: null
+tinyproxy::upstreams: null
+tinyproxy::no_upstreams: null
 tinyproxy::max_clients: 100
 tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20
