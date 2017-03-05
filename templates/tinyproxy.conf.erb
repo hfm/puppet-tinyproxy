@@ -315,9 +315,9 @@ ViaProxyName "<%= @via_proxy_name %>"
 #
 # The following two ports are used by SSL.
 #
-<%- if @connect_port; [@connect_port].flatten.each do |port| -%>
+<%- [@connect_port].flatten.each do |port| -%>
 ConnectPort <%= port %>
-<%- end end -%>
+<%- end if @connect_port -%>
 
 #
 # Configure one or more ReversePath directives to enable reverse proxy
