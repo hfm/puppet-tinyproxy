@@ -70,6 +70,7 @@ class tinyproxy (
   Integer $max_requests_per_child,
   Optional[String] $allow,
   Optional[String] $deny,
+  String $via_proxy_name,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Variant[Integer, Array[Integer]] $connect_port,
 
@@ -107,6 +108,7 @@ class tinyproxy (
     max_requests_per_child => $max_requests_per_child,
     allow                  => $allow,
     deny                   => $deny,
+    via_proxy_name         => $via_proxy_name,
     log_level              => $log_level,
     connect_port           => $connect_port,
   } ~>

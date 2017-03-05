@@ -106,6 +106,7 @@ tinyproxy::service_enable: true
 - `max_requests_per_child`: Specify the number of connections a thread will handle before it's killed. Type is Integer. Default: 0.
 - `allow`: Specify authorization control which clients are allowed to access Tinyproxy. Type is Optional[String]. Default: '127.0.0.1'.
 - `deny`: Specify authorization control which clients are denied to access Tinyproxy. Type is Optional[String]. Default: undef.
+- `via_proxy_name`: Specify the "Via" header. Type is String. Default: 'tinyproxy'.
 - `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
 - `connect_port`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Variant[Integer, Array[Integer]]. Default: [443, 563].
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.

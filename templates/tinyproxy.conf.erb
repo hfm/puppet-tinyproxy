@@ -250,7 +250,7 @@ Deny <%= @deny %>
 # is enabled, the string supplied will be used as the host name in the
 # Via header; otherwise, the server's host name will be used.
 #
-ViaProxyName "tinyproxy"
+ViaProxyName "<%= @via_proxy_name %>"
 
 #
 # DisableViaHeader: When this is set to yes, Tinyproxy does NOT add
