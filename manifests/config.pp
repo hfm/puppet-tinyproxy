@@ -21,6 +21,8 @@ class tinyproxy::config (
   Integer $max_spare_servers,
   Integer $start_servers,
   Integer $max_requests_per_child,
+  Optional[String] $allow,
+  Optional[String] $deny,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Variant[Integer, Array[Integer]] $connect_port,
 ){

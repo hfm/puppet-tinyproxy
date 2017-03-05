@@ -230,7 +230,12 @@ MaxRequestsPerChild <%= @max_requests_per_child %>
 # The order of the controls are important. All incoming connections are
 # tested against the controls based on order.
 #
-Allow 127.0.0.1
+<%- if @allow -%>
+Allow <%= @allow %>
+<%- end -%>
+<%- if @deny -%>
+Deny <%= @deny %>
+<%- end -%>
 
 #
 # AddHeader: Adds the specified headers to outgoing HTTP requests that

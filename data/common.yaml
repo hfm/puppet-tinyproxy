@@ -23,6 +23,8 @@ tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20
 tinyproxy::start_servers: 10
 tinyproxy::max_requests_per_child: 0
+tinyproxy::allow: '127.0.0.1'
+tinyproxy::deny: null
 tinyproxy::log_level: 'Info'
 tinyproxy::connect_port:
   - 443
