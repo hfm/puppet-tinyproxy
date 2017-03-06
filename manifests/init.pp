@@ -74,7 +74,7 @@ class tinyproxy (
   String $via_proxy_name,
   Boolean $disable_via_header,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
-  Variant[Integer, Array[Integer]] $connect_port,
+  Optional[Array[Integer]] $connect_ports,
 
   Enum['running','stopped'] $service_ensure,
   Boolean                   $service_enable,
@@ -114,7 +114,7 @@ class tinyproxy (
     via_proxy_name         => $via_proxy_name,
     disable_via_header     => $disable_via_header,
     log_level              => $log_level,
-    connect_port           => $connect_port,
+    connect_ports          => $connect_ports,
   } ~>
 
   class { 'tinyproxy::service':

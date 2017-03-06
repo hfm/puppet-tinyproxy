@@ -29,7 +29,7 @@ tinyproxy::add_headers: null
 tinyproxy::via_proxy_name: 'tinyproxy'
 tinyproxy::disable_via_header: false
 tinyproxy::log_level: 'Info'
-tinyproxy::connect_port:
+tinyproxy::connect_ports:
   - 443
   - 563
 

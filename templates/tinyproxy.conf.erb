@@ -317,9 +317,9 @@ DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
 #
 # The following two ports are used by SSL.
 #
-<%- [@connect_port].flatten.each do |port| -%>
+<%- @connect_ports.each do |port| -%>
 ConnectPort <%= port %>
-<%- end if @connect_port -%>
+<%- end if @connect_ports -%>
 
 #
 # Configure one or more ReversePath directives to enable reverse proxy

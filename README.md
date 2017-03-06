@@ -110,7 +110,7 @@ tinyproxy::service_enable: true
 - `via_proxy_name`: Specify the "Via" header. Type is String. Default: 'tinyproxy'.
 - `disable_via_header`: Whether tinyproxy disables the "Via" header. Type is Boolean. Default: false.
 - `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
-- `connect_port`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Variant[Integer, Array[Integer]]. Default: [443, 563].
+- `connect_ports`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Optional[Array[Integer]]. Default: [443, 563].
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.
 - `service_enable`: Whether a service should be enabled to start at boot. Type is Boolean. Default: true.
 
