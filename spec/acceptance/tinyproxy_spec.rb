@@ -11,7 +11,11 @@ describe 'tinyproxy class' do
         no_upstreams => ['www.example.com'],
         add_headers => {
           'X-My-Header' => 'Powored by Tinyproxy',
-        }
+        },
+        reverse_paths => {
+          '/google/' => 'http://www.google.com/',
+          '/wired/' => 'http://www.wired.com/',
+        },
       }
     EOS
   end
@@ -56,6 +60,8 @@ describe 'tinyproxy class' do
     its(:content) { should match /^DisableViaHeader\s+No$/ }
     its(:content) { should match /^ConnectPort\s+443$/ }
     its(:content) { should match /^ConnectPort\s+563$/ }
+    its(:content) { should match %r{^ReversePath\s+"/google/" "http://www.google.com/"$} }
+    its(:content) { should match %r{^ReversePath\s+"/wired/" "http://www.wired.com/"$} }
   end
 
   describe service('tinyproxy') do

@@ -29,6 +29,7 @@ class tinyproxy::config (
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Optional[Array[String]] $anonymous,
   Optional[Array[Integer]] $connect_ports,
+  Optional[Hash[String, String]] $reverse_paths,
 ){
 
   if $log_file != undef and $use_syslog == true {

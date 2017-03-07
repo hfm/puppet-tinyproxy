@@ -76,6 +76,7 @@ class tinyproxy (
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
   Optional[Array[String]] $anonymous,
   Optional[Array[Integer]] $connect_ports,
+  Optional[Hash[String, String]] $reverse_paths,
 
   Enum['running','stopped'] $service_ensure,
   Boolean                   $service_enable,
@@ -117,6 +118,7 @@ class tinyproxy (
     log_level              => $log_level,
     anonymous              => $anonymous,
     connect_ports          => $connect_ports,
+    reverse_paths          => $reverse_paths,
   } ~>
 
   class { 'tinyproxy::service':

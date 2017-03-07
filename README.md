@@ -112,6 +112,7 @@ tinyproxy::service_enable: true
 - `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
 - `anonymous`: Specify anonymous keywords. Type is Optional[Array[String]]. Default: undef.
 - `connect_ports`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Optional[Array[Integer]]. Default: [443, 563].
+- `reverse_paths`: Specify a mapping from the local path to remote URL. Type is Optional[Hash[String, String]]. Default: undef.
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.
 - `service_enable`: Whether a service should be enabled to start at boot. Type is Boolean. Default: true.
 

@@ -332,8 +332,9 @@ ConnectPort <%= port %>
 # http://localhost:8888/wired/news/. Neither will actually work
 # until you uncomment ReverseMagic as they use absolute linking.
 #
-#ReversePath "/google/"	"http://www.google.com/"
-#ReversePath "/wired/"	"http://www.wired.com/"
+<%- @reverse_paths.each do |path, url| -%>
+ReversePath "<%= path %>" "<%= url %>"
+<%- end if @reverse_paths -%>
 
 #
 # When using tinyproxy as a reverse proxy, it is STRONGLY recommended

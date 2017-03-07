@@ -33,6 +33,7 @@ tinyproxy::anonymous: null
 tinyproxy::connect_ports:
   - 443
   - 563
+tinyproxy::reverse_paths: null
 
 tinyproxy::service_ensure: 'running'
 tinyproxy::service_enable: true
