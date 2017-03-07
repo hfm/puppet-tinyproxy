@@ -109,6 +109,11 @@ tinyproxy::service_enable: true
 - `add_headers`: Specify additional headers. Type is Optional[Hash[String, String]]. Default: undef.
 - `via_proxy_name`: Specify the "Via" header. Type is String. Default: 'tinyproxy'.
 - `disable_via_header`: Whether tinyproxy disables the "Via" header. Type is Boolean. Default: false.
+- `filter`: Specify the location of the filter file. Type is Optional[String]. Default: false.
+- `filter_urls`: Whether filter is based on urls rather than domains. Type is Optional[Boolean]. Default: undef.
+- `filter_extended`: Whether filter uses POSIX Extended regexp. Type is Optional[Boolean]. Default: undef.
+- `filter_case_sensitive`: Whether filter uses case sensitive regexp. Type is Optional[Boolean]. Default: undef.
+- `filter_default_deny`: Whether filter changes the default policy of the filtering system. Type is Optional[Boolean]. Default: undef.
 - `log_level`: Set the logging level. Type is Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info']. Default: 'Info'.
 - `anonymous`: Specify anonymous keywords. Type is Optional[Array[String]]. Default: undef.
 - `connect_ports`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Optional[Array[Integer]]. Default: [443, 563].

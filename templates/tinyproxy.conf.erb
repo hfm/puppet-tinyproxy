@@ -266,23 +266,39 @@ DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
 #
 # Filter: This allows you to specify the location of the filter file.
 #
+<%- if @filter.nil? -%>
 #Filter "/etc/tinyproxy/filter"
+<%- else -%>
+Filter "<%= @filter %>"
+<%- end -%>
 
 #
 # FilterURLs: Filter based on URLs rather than domains.
 #
+<%- if @filter_urls.nil? -%>
 #FilterURLs On
+<%- else -%>
+FilterURLs "<%= @filter_urls ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterExtended: Use POSIX Extended regular expressions rather than
 # basic.
 #
+<%- if @filter_extended.nil? -%>
 #FilterExtended On
+<%- else -%>
+FilterExtended "<%= @filter_extended ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterCaseSensitive: Use case sensitive regular expressions.
 #
+<%- if @filter_case_sensitive.nil? -%>
 #FilterCaseSensitive On
+<%- else -%>
+FilterCaseSensitive "<%= @filter_case_sensitive ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterDefaultDeny: Change the default policy of the filtering system.
@@ -294,7 +310,11 @@ DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
 # to deny everything which is _not_ specifically allowed by the filter
 # file.
 #
+<%- if @filter_default_deny.nil? -%>
 #FilterDefaultDeny Yes
+<%- else -%>
+FilterDefaultDeny "<%= @filter_default_deny ? 'Yes' : 'No' %>"
+<%- end -%>
 
 #
 # Anonymous: If an Anonymous keyword is present, then anonymous proxying
