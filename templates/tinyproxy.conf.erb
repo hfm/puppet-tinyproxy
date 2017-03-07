@@ -305,9 +305,9 @@ DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
 # Most sites require cookies to be enabled for them to work correctly, so
 # you will need to allow Cookies through if you access those sites.
 #
-#Anonymous "Host"
-#Anonymous "Authorization"
-#Anonymous "Cookie"
+<%- @anonymous.each do |key| -%>
+Anonymous "<%= key %>"
+<%- end if @anonymous -%>
 
 #
 # ConnectPort: This is a list of ports allowed by tinyproxy when the

@@ -27,6 +27,7 @@ class tinyproxy::config (
   String $via_proxy_name,
   Boolean $disable_via_header,
   Enum['Critical', 'Error', 'Warning', 'Notice', 'Connect', 'Info'] $log_level,
+  Optional[Array[String]] $anonymous,
   Optional[Array[Integer]] $connect_ports,
 ){
 
