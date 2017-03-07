@@ -340,13 +340,21 @@ ReversePath "<%= path %>" "<%= url %>"
 # When using tinyproxy as a reverse proxy, it is STRONGLY recommended
 # that the normal proxy is turned off by uncommenting the next directive.
 #
+<%- if @reverse_only.nil? -%>
 #ReverseOnly Yes
+<%- else -%>
+ReverseOnly <%= @reverse_only ? 'Yes' : 'No'%>
+<%- end -%>
 
 #
 # Use a cookie to track reverse proxy mappings. If you need to reverse
 # proxy sites which have absolute links you must uncomment this.
 #
+<%- if @reverse_magic.nil? -%>
 #ReverseMagic Yes
+<%- else -%>
+ReverseMagic <%= @reverse_magic ? 'Yes' : 'No'%>
+<%- end -%>
 
 #
 # The URL that's used to access this reverse proxy. The URL is used to
@@ -356,4 +364,8 @@ ReversePath "<%= path %>" "<%= url %>"
 #
 # If not set then no rewriting occurs.
 #
+<%- if @reverse_baseurl.nil? -%>
 #ReverseBaseURL "http://localhost:8888/"
+<%- else -%>
+ReverseBaseURL "<%= @reverse_baseurl %>"
+<%- end -%>

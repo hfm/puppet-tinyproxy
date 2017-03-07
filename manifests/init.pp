@@ -77,6 +77,9 @@ class tinyproxy (
   Optional[Array[String]] $anonymous,
   Optional[Array[Integer]] $connect_ports,
   Optional[Hash[String, String]] $reverse_paths,
+  Optional[Boolean] $reverse_only,
+  Optional[Boolean] $reverse_magic,
+  Optional[String] $reverse_baseurl,
 
   Enum['running','stopped'] $service_ensure,
   Boolean                   $service_enable,
@@ -119,6 +122,9 @@ class tinyproxy (
     anonymous              => $anonymous,
     connect_ports          => $connect_ports,
     reverse_paths          => $reverse_paths,
+    reverse_only           => $reverse_only,
+    reverse_magic          => $reverse_magic,
+    reverse_baseurl        => $reverse_baseurl,
   } ~>
 
   class { 'tinyproxy::service':

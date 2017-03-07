@@ -30,6 +30,9 @@ class tinyproxy::config (
   Optional[Array[String]] $anonymous,
   Optional[Array[Integer]] $connect_ports,
   Optional[Hash[String, String]] $reverse_paths,
+  Optional[Boolean] $reverse_only,
+  Optional[Boolean] $reverse_magic,
+  Optional[String] $reverse_baseurl,
 ){
 
   if $log_file != undef and $use_syslog == true {

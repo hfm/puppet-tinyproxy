@@ -113,6 +113,9 @@ tinyproxy::service_enable: true
 - `anonymous`: Specify anonymous keywords. Type is Optional[Array[String]]. Default: undef.
 - `connect_ports`: Specify a list of ports allowed by tinyproxy when the CONNECT method is used. Type is Optional[Array[Integer]]. Default: [443, 563].
 - `reverse_paths`: Specify a mapping from the local path to remote URL. Type is Optional[Hash[String, String]]. Default: undef.
+- `reverse_only`: Whether the normal(forward) proxy is turned off. Type is Optional[Boolean]. Default: undef.
+- `reverse_magic`: Whether tinyproxy uses a cookie to track reverse proxy mappings. Type is Optional[Boolean]. Default: undef.
+- `reverse_baseurl`: Specify URL that's used to access this reverse proxy. Type is Optional[String]. Default: undef.
 - `service_ensure`: Whether a service should be running. Type is Enum['running', 'stopped']. Default: 'running'.
 - `service_enable`: Whether a service should be enabled to start at boot. Type is Boolean. Default: true.
 

@@ -34,6 +34,9 @@ tinyproxy::connect_ports:
   - 443
   - 563
 tinyproxy::reverse_paths: null
+tinyproxy::reverse_only: null
+tinyproxy::reverse_magic: null
+tinyproxy::reverse_baseurl: null
 
 tinyproxy::service_ensure: 'running'
 tinyproxy::service_enable: true
