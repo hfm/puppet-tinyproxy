@@ -1,6 +1,6 @@
 {
   "name": "hfm-tinyproxy",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "author": "hfm",
   "summary": "Install, configures, and manages tinyproxy.",
   "license": "MIT",
