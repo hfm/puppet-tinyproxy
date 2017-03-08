@@ -258,7 +258,8 @@ Deny <%= @deny %>
 <%- else
       @add_headers.each_pair do |name, value| -%>
 AddHeader "<%= name %>" "<%= value %>"
-<%- end -%>
+<%-   end
+    end -%>
 
 #
 # ViaProxyName: The "Via" header is required by the HTTP RFC, but using
@@ -347,9 +348,11 @@ FilterDefaultDeny "<%= @filter_default_deny ? 'Yes' : 'No' %>"
 #Anonymous "Host"
 #Anonymous "Authorization"
 #Anonymous "Cookie"
-<%- @anonymous.each do |key| -%>
+<%- else
+      @anonymous.each do |key| -%>
 Anonymous "<%= key %>"
-<%- end -%>
+<%-   end
+    end -%>
 
 #
 # ConnectPort: This is a list of ports allowed by tinyproxy when the
@@ -380,7 +383,8 @@ ConnectPort <%= port %>
 <%- else
       @reverse_paths.each do |path, url| -%>
 ReversePath "<%= path %>" "<%= url %>"
-<%- end -%>
+<%-   end
+    end -%>
 
 #
 # When using tinyproxy as a reverse proxy, it is STRONGLY recommended
