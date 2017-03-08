@@ -1,3 +1,8 @@
+Release 0.1.5 (2017/03/08)
+---
+
+Configure params [#13](https://github.com/hfm/puppet-tinyproxy/pull/13)
+
 Release 0.1.4 (2017/03/04)
 ---
 
