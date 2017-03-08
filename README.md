@@ -46,24 +46,55 @@ include ::tinyproxy
 
 ```puppet
 class { '::tinyproxy':
-  use_epel       => true,
-  package_ensure => 'installed',
-  config_ensure  => 'file',
-  service_ensure => 'running',
-  service_enable => true,
+  port          => 8080,
+  listen        => '0.0.0.0',
+  allow         => '10.0.0.0/8',
+  connect_ports => [],
 }
 ```
 
 ### Configuring modules from Hiera
 
+Listen 0.0.0.0:8080 and allow access from 10.0.0.0/8.
+
 ```yaml
----
-tinyproxy::use_epel: true
-tinyproxy::package_ensure: installed
-tinyproxy::config_ensure: file
-tinyproxy::service_ensure: running
-tinyproxy::service_enable: true
+tinyproxy::port: 8080
+tinyproxy::listen: '0.0.0.0'
+tinyproxy::allow: '10.0.0.0/8'
 ```
+
+Configure connections.
+
+```yaml
+tinyproxy::max_clients: 200
+tinyproxy::min_spare_servers: 20
+tinyproxy::max_spare_servers: 20
+tinyproxy::start_servers: 20
+```
+
+No ConnectPort means that all ports are allowed.
+
+```yaml
+tinyproxy::connect_ports: null
+```
+
+Add some headers.
+
+```yaml
+tinyproxy::add_headers:
+  'X-My-Header': 'Powored by Tinyproxy'
+  'Y-My-Header': 'Powored by Tinyproxy'
+```
+
+Turn off the normal proxy (only reverse proxy).
+
+```yaml
+tinyproxy::reverse_only: true
+tinyproxy::reverse_paths:
+  '/google/': 'http://www.google.com/'
+  '/wired/': 'http://www.wired.com/'
+```
+
 ## Reference
 
 ### Public Classes
