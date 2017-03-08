@@ -7,15 +7,41 @@ tinyproxy::listen: null
 tinyproxy::bind: null
 tinyproxy::bind_same: null
 tinyproxy::timeout: 600
+tinyproxy::error_files: null
+tinyproxy::default_error_file: "/usr/share/tinyproxy/default.html"
+tinyproxy::stat_host: null
+tinyproxy::stat_file: "/usr/share/tinyproxy/stats.html"
+tinyproxy::log_file: "/var/log/tinyproxy/tinyproxy.log"
+tinyproxy::use_syslog: false
+tinyproxy::pid_file: "/var/run/tinyproxy/tinyproxy.pid"
+tinyproxy::use_xtinyproxy: false
+tinyproxy::default_upstreams: null
+tinyproxy::upstreams: null
+tinyproxy::no_upstreams: null
 tinyproxy::max_clients: 100
 tinyproxy::min_spare_servers: 5
 tinyproxy::max_spare_servers: 20
 tinyproxy::start_servers: 10
 tinyproxy::max_requests_per_child: 0
+tinyproxy::allow: '127.0.0.1'
+tinyproxy::deny: null
+tinyproxy::add_headers: null
+tinyproxy::via_proxy_name: 'tinyproxy'
+tinyproxy::disable_via_header: false
+tinyproxy::filter: null
+tinyproxy::filter_urls: null
+tinyproxy::filter_extended: null
+tinyproxy::filter_case_sensitive: null
+tinyproxy::filter_default_deny: null
 tinyproxy::log_level: 'Info'
-tinyproxy::connect_port:
+tinyproxy::anonymous: null
+tinyproxy::connect_ports:
   - 443
   - 563
+tinyproxy::reverse_paths: null
+tinyproxy::reverse_only: null
+tinyproxy::reverse_magic: null
+tinyproxy::reverse_baseurl: null
 
 tinyproxy::service_ensure: 'running'
 tinyproxy::service_enable: true

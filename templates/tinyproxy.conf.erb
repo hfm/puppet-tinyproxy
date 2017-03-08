@@ -62,18 +62,16 @@ Timeout <%= @timeout %>
 #   /usr/share/tinyproxy
 #   /etc/tinyproxy
 #
-#ErrorFile 404 "/usr/share/tinyproxy/404.html"
-#ErrorFile 400 "/usr/share/tinyproxy/400.html"
-#ErrorFile 503 "/usr/share/tinyproxy/503.html"
-#ErrorFile 403 "/usr/share/tinyproxy/403.html"
-#ErrorFile 408 "/usr/share/tinyproxy/408.html"
+<%- @error_files.each_pair do |number, location| -%>
+ErrorFile <%= number %> "<%= location %>"
+<%- end if @error_files -%>
 
 #
 # DefaultErrorFile: The HTML file that gets sent if there is no
 # HTML file defined with an ErrorFile keyword for the HTTP error
 # that has occured.
 #
-DefaultErrorFile "/usr/share/tinyproxy/default.html"
+DefaultErrorFile "<%= @default_error_file %>"
 
 #
 # StatHost: This configures the host name or IP address that is treated
@@ -82,15 +80,19 @@ DefaultErrorFile "/usr/share/tinyproxy/default.html"
 # forwarding the request to that host.  The default value of StatHost is
 # tinyproxy.stats.
 #
+<%- if @stat_host.nil? -%>
 #StatHost "tinyproxy.stats"
 #
+<%- else -%>
+StatHost <%= @stat_host %>
+<%- end -%>
 
 #
 # StatFile: The HTML file that gets sent when a request is made
 # for the stathost.  If this file doesn't exist a basic page is
 # hardcoded in tinyproxy.
 #
-StatFile "/usr/share/tinyproxy/stats.html"
+StatFile "<%= @stat_file %>"
 
 #
 # LogFile: Allows you to specify the location where information should
@@ -98,14 +100,20 @@ StatFile "/usr/share/tinyproxy/stats.html"
 # and enable the Syslog directive.  These directives are mutually
 # exclusive.
 #
-LogFile "/var/log/tinyproxy/tinyproxy.log"
+<%- if @log_file -%>
+LogFile "<%= @log_file %>"
+<%- end -%>
 
 #
 # Syslog: Tell tinyproxy to use syslog instead of a logfile.  This
 # option must not be enabled if the Logfile directive is being used.
 # These two directives are mutually exclusive.
 #
+<%- if @syslog.nil? -%>
 #Syslog On
+<%- else -%>
+Syslog <%= @syslog ? 'On' : 'Off' %>
+<%- end -%>
 
 #
 # LogLevel:
@@ -128,13 +136,17 @@ LogLevel <%= @log_level %>
 # PidFile: Write the PID of the main tinyproxy thread to this file so it
 # can be used for signalling purposes.
 #
-PidFile "/var/run/tinyproxy/tinyproxy.pid"
+PidFile "<%= @pid_file %>"
 
 #
 # XTinyproxy: Tell Tinyproxy to include the X-Tinyproxy header, which
 # contains the client's IP address.
 #
+<%- if @syslog.nil? -%>
 #XTinyproxy Yes
+<%- else -%>
+XTinyproxy <%= @use_xtinyproxy ? 'Yes' : 'No' %>
+<%- end -%>
 
 #
 # Upstream:
@@ -172,7 +184,23 @@ PidFile "/var/run/tinyproxy/tinyproxy.pid"
 #  IP/bits  matches network/mask
 #  IP/mask  matches network/mask
 #
-#Upstream some.remote.proxy:port
+<%- @default_upstreams.each do |host_port| -%>
+upstream <%= host_port %>
+<%- end if @default_upstreams -%>
+<%-
+  if @upstreams
+    @upstreams.each_pair do |host_port, site_specs|
+      [site_specs].flatten.each do |site_spec|
+-%>
+upstream <%= host_port %> "<%= site_spec %>"
+<%-
+      end
+    end
+  end
+-%>
+<%- @no_upstreams.each do |site_spec| -%>
+no upstream "<%= site_spec %>"
+<%- end if @no_upstreams -%>
 
 #
 # MaxClients: This is the absolute highest number of threads which will
@@ -213,14 +241,25 @@ MaxRequestsPerChild <%= @max_requests_per_child %>
 # The order of the controls are important. All incoming connections are
 # tested against the controls based on order.
 #
-Allow 127.0.0.1
+<%- if @allow -%>
+Allow <%= @allow %>
+<%- end -%>
+<%- if @deny -%>
+Deny <%= @deny %>
+<%- end -%>
 
 #
 # AddHeader: Adds the specified headers to outgoing HTTP requests that
 # Tinyproxy makes. Note that this option will not work for HTTPS
 # traffic, as Tinyproxy has no control over what headers are exchanged.
 #
+<%- if @add_headers.nil? -%>
 #AddHeader "X-My-Header" "Powered by Tinyproxy"
+<%- else
+      @add_headers.each_pair do |name, value| -%>
+AddHeader "<%= name %>" "<%= value %>"
+<%-   end
+    end -%>
 
 #
 # ViaProxyName: The "Via" header is required by the HTTP RFC, but using
@@ -228,7 +267,7 @@ Allow 127.0.0.1
 # is enabled, the string supplied will be used as the host name in the
 # Via header; otherwise, the server's host name will be used.
 #
-ViaProxyName "tinyproxy"
+ViaProxyName "<%= @via_proxy_name %>"
 
 #
 # DisableViaHeader: When this is set to yes, Tinyproxy does NOT add
@@ -237,28 +276,48 @@ ViaProxyName "tinyproxy"
 # header, so by enabling this option, you break compliance.
 # Don't disable the Via header unless you know what you are doing...
 #
+<%- if @disable_via_header.nil? -%>
 #DisableViaHeader Yes
+<%- else -%>
+DisableViaHeader <%= @disable_via_header ? 'Yes' : 'No' %>
+<%- end -%>
 
 #
 # Filter: This allows you to specify the location of the filter file.
 #
+<%- if @filter.nil? -%>
 #Filter "/etc/tinyproxy/filter"
+<%- else -%>
+Filter "<%= @filter %>"
+<%- end -%>
 
 #
 # FilterURLs: Filter based on URLs rather than domains.
 #
+<%- if @filter_urls.nil? -%>
 #FilterURLs On
+<%- else -%>
+FilterURLs "<%= @filter_urls ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterExtended: Use POSIX Extended regular expressions rather than
 # basic.
 #
+<%- if @filter_extended.nil? -%>
 #FilterExtended On
+<%- else -%>
+FilterExtended "<%= @filter_extended ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterCaseSensitive: Use case sensitive regular expressions.
 #
+<%- if @filter_case_sensitive.nil? -%>
 #FilterCaseSensitive On
+<%- else -%>
+FilterCaseSensitive "<%= @filter_case_sensitive ? 'On' : 'Off' %>"
+<%- end -%>
 
 #
 # FilterDefaultDeny: Change the default policy of the filtering system.
@@ -270,7 +329,11 @@ ViaProxyName "tinyproxy"
 # to deny everything which is _not_ specifically allowed by the filter
 # file.
 #
+<%- if @filter_default_deny.nil? -%>
 #FilterDefaultDeny Yes
+<%- else -%>
+FilterDefaultDeny "<%= @filter_default_deny ? 'Yes' : 'No' %>"
+<%- end -%>
 
 #
 # Anonymous: If an Anonymous keyword is present, then anonymous proxying
@@ -281,9 +344,15 @@ ViaProxyName "tinyproxy"
 # Most sites require cookies to be enabled for them to work correctly, so
 # you will need to allow Cookies through if you access those sites.
 #
+<%- if @anonymous.nil? -%>
 #Anonymous "Host"
 #Anonymous "Authorization"
 #Anonymous "Cookie"
+<%- else
+      @anonymous.each do |key| -%>
+Anonymous "<%= key %>"
+<%-   end
+    end -%>
 
 #
 # ConnectPort: This is a list of ports allowed by tinyproxy when the
@@ -293,9 +362,9 @@ ViaProxyName "tinyproxy"
 #
 # The following two ports are used by SSL.
 #
-<%- if @connect_port; [@connect_port].flatten.each do |port| -%>
+<%- @connect_ports.each do |port| -%>
 ConnectPort <%= port %>
-<%- end end -%>
+<%- end if @connect_ports -%>
 
 #
 # Configure one or more ReversePath directives to enable reverse proxy
@@ -308,20 +377,34 @@ ConnectPort <%= port %>
 # http://localhost:8888/wired/news/. Neither will actually work
 # until you uncomment ReverseMagic as they use absolute linking.
 #
+<%- if @reverse_paths.nil? -%>
 #ReversePath "/google/"	"http://www.google.com/"
 #ReversePath "/wired/"	"http://www.wired.com/"
+<%- else
+      @reverse_paths.each do |path, url| -%>
+ReversePath "<%= path %>" "<%= url %>"
+<%-   end
+    end -%>
 
 #
 # When using tinyproxy as a reverse proxy, it is STRONGLY recommended
 # that the normal proxy is turned off by uncommenting the next directive.
 #
+<%- if @reverse_only.nil? -%>
 #ReverseOnly Yes
+<%- else -%>
+ReverseOnly <%= @reverse_only ? 'Yes' : 'No'%>
+<%- end -%>
 
 #
 # Use a cookie to track reverse proxy mappings. If you need to reverse
 # proxy sites which have absolute links you must uncomment this.
 #
+<%- if @reverse_magic.nil? -%>
 #ReverseMagic Yes
+<%- else -%>
+ReverseMagic <%= @reverse_magic ? 'Yes' : 'No'%>
+<%- end -%>
 
 #
 # The URL that's used to access this reverse proxy. The URL is used to
@@ -331,4 +414,8 @@ ConnectPort <%= port %>
 #
 # If not set then no rewriting occurs.
 #
+<%- if @reverse_baseurl.nil? -%>
 #ReverseBaseURL "http://localhost:8888/"
+<%- else -%>
+ReverseBaseURL "<%= @reverse_baseurl %>"
+<%- end -%>
