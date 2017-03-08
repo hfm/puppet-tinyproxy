@@ -27,7 +27,9 @@ Port <%= @port %>
 # only one. If this is commented out, tinyproxy will bind to all
 # interfaces present.
 #
-<%- if @listen -%>
+<%- if @listen.nil? -%>
+#Listen 192.168.0.1
+<%- else -%>
 Listen <%= @listen %>
 <%- end -%>
 
@@ -36,7 +38,9 @@ Listen <%= @listen %>
 # outgoing connections.  This is useful for multi-home'd machines where
 # you want all traffic to appear outgoing from one particular interface.
 #
-<%- if @bind -%>
+<%- if @bind.nil? -%>
+#Bind 192.168.0.1
+<%- else -%>
 Bind <%= @bind %>
 <%- end -%>
 
@@ -44,7 +48,9 @@ Bind <%= @bind %>
 # BindSame: If enabled, tinyproxy will bind the outgoing connection to the
 # ip address of the incoming connection.
 #
-<%- if @bind_same -%>
+<%- if @bind_same.nil? -%>
+#BindSame yes
+<%- else -%>
 BindSame <%= @bind_same %>
 <%- end -%>
 
@@ -62,9 +68,17 @@ Timeout <%= @timeout %>
 #   /usr/share/tinyproxy
 #   /etc/tinyproxy
 #
-<%- @error_files.each_pair do |number, location| -%>
+<%- if @error_files.nil? -%>
+#ErrorFile 404 "/usr/share/tinyproxy/404.html"
+#ErrorFile 400 "/usr/share/tinyproxy/400.html"
+#ErrorFile 503 "/usr/share/tinyproxy/503.html"
+#ErrorFile 403 "/usr/share/tinyproxy/403.html"
+#ErrorFile 408 "/usr/share/tinyproxy/408.html"
+<%- else
+      @error_files.each_pair do |number, location| -%>
 ErrorFile <%= number %> "<%= location %>"
-<%- end if @error_files -%>
+<%-   end
+    end -%>
 
 #
 # DefaultErrorFile: The HTML file that gets sent if there is no
