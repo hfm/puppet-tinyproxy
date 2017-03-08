@@ -1,3 +1,8 @@
+Release 1.0.0 (2017/03/09)
+---
+
+Bump up major version (has change little from v0.1.6).
+
 Release 0.1.6 (2017/03/08)
 ---
 
