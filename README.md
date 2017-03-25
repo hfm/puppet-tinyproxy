@@ -4,19 +4,19 @@
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with tinyproxy](#setup)
-  - [Setup requirements](#setup-requirements)
-  - [Beginning with tinyproxy](#beginning-with-tinyproxy)
+    - [Setup requirements](#setup-requirements)
+    - [Beginning with tinyproxy](#beginning-with-tinyproxy)
 1. [Usage - Configuration options and additional functionality](#usage)
-  - [Configuring tinyproxy](#configuring-tinyproxy)
-  - [Configuring modules from Hiera](#configuring-modules-from-hiera)
+    - [Configuring tinyproxy](#configuring-tinyproxy)
+    - [Configuring modules from Hiera](#configuring-modules-from-hiera)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-  - [Public Classes](#public-classes)
-  - [Private Classes](#private-classes)
-  - [Parameters](#parameters)
+    - [Public Classes](#public-classes)
+    - [Private Classes](#private-classes)
+    - [Parameters](#parameters)
 1. [Limitations - OS compatibility, etc.](#limitations)
 1. [Development - Guide for contributing to the module](#development)
-  - [Running tests](#running-tests)
-  - [Testing quickstart](#testing-quickstart)
+    - [Running tests](#running-tests)
+    - [Testing quickstart](#testing-quickstart)
 
 ## Description
 
