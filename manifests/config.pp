@@ -1,4 +1,7 @@
 class tinyproxy::config (
+  String $config_path,
+  String $user,
+  String $group,
   Enum['file', 'absent'] $config_ensure,
   Integer $port,
   Optional[String] $listen,
@@ -42,25 +45,6 @@ class tinyproxy::config (
 
   if $log_file != undef and $use_syslog == true {
     fail('$use_syslog and $log_logfile are mutually exclusive.')
-  }
-
-  $config_path = $facts['os']['family'] ? {
-    'Debian' => '/etc/tinyproxy.conf',
-    'RedHat' => '/etc/tinyproxy/tinyproxy.conf',
-    default  => '/etc/tinyproxy/tinyproxy.conf',
-  }
-
-  # Template uses
-  $user = $facts['os']['family'] ? {
-    'Debian' => 'nobody',
-    'RedHat' => 'tinyproxy',
-    default  => 'tinyproxy',
-  }
-
-  $group = $facts['os']['family'] ? {
-    'Debian' => 'nogroup',
-    'RedHat' => 'tinyproxy',
-    default  => 'tinyproxy',
   }
 
   file { $config_path:

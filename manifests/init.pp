@@ -47,6 +47,9 @@ class tinyproxy (
   String  $package_ensure,
 
   Enum['file', 'absent'] $config_ensure,
+  String $config_path,
+  String $user,
+  String $group,
   Integer $port,
   Optional[String] $listen,
   Optional[String] $bind,
@@ -97,6 +100,9 @@ class tinyproxy (
 
   class { 'tinyproxy::config':
     config_ensure          => $config_ensure,
+    config_path            => $config_path,
+    user                   => $user,
+    group                  => $group,
     port                   => $port,
     listen                 => $listen,
     bind                   => $bind,
