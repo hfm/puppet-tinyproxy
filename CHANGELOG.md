@@ -1,4 +1,4 @@
-Release 1.1.0 (2017/03/09)
+Release 1.1.0 (2017/03/26)
 ---
 
 - Enable to configure user, group, and config path [#14](https://github.com/hfm/puppet-tinyproxy/pull/14).
