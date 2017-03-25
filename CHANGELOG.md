@@ -1,3 +1,9 @@
+Release 1.1.0 (2017/03/09)
+---
+
+- Enable to configure user, group, and config path [#14](https://github.com/hfm/puppet-tinyproxy/pull/14).
+- Remove `"data_provider": "hiera"` in metadata.json because of deprecation [#15](https://github.com/hfm/puppet-tinyproxy/pull/15).
+
 Release 1.0.0 (2017/03/09)
 ---
 
