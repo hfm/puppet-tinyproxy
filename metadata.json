@@ -68,6 +68,5 @@
         "8"
       ]
     }
-  ],
-  "data_provider": "hiera"
+  ]
 }
