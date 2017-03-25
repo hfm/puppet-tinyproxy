@@ -114,6 +114,9 @@ tinyproxy::reverse_paths:
 - `use_epel`: Whether epel repository should be installed. Type is Boolean. Default: true.
 - `package_ensure`: What state the tinyproxy package should be in. Type is String. Default: 'installed'.
 - `config_ensure`: Whether the tinyproxy.conf should exist. Type is Enum['file', 'absent']. Default: 'file'.
+- `config_path`: The path to the file to manage. Type is String. Default: '/etc/tinyproxy/tinyproxy.conf' (RedHat) or '/etc/tinyproxy.conf' (Debian).
+- `user`: The user to whom the file should belong. Type is String. Default: 'tinyproxy' or 'nogroup' (Debian).
+- `gruop`: Which group should own the file.  Type is String. Default: 'tinyproxy' (RedHat) or 'nogroup' (Debian).
 - `port`:Specify the port which tinyproxy will listen on. Type is Integer. Default: 8888.
 - `listen`: Allow you to bind to an interface. Type is Optional[String]. Default: undef.
 - `bind`: Specify which interface will be used for outgoing connections. Type is Optional[String]. Default: undef.

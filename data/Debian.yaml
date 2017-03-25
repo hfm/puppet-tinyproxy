@@ -1,3 +1,3 @@
-tinyproxy::config::config_path: '/etc/tinyproxy.conf'
-tinyproxy::config::user: 'nobody'
-tinyproxy::config::group: 'nogroup'
+tinyproxy::config_path: '/etc/tinyproxy.conf'
+tinyproxy::user: 'nobody'
+tinyproxy::group: 'nogroup'

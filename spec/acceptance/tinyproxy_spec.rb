@@ -42,8 +42,22 @@ describe 'tinyproxy class' do
                 when 'ubuntu' then '/etc/tinyproxy.conf'
                 end
 
+  user = case os[:family]
+         when 'redhat' then 'tinyproxy'
+         when 'debian' then 'nobody'
+         when 'ubuntu' then 'nobody'
+         end
+
+  group = case os[:family]
+          when 'redhat' then 'tinyproxy'
+          when 'debian' then 'nogroup'
+          when 'ubuntu' then 'nogroup'
+          end
+
   describe file(config_path) do
     it { should be_file }
+    its(:content) { should match /^User\s+#{user}$/ }
+    its(:content) { should match /^Group\s+#{group}$/ }
     its(:content) { should match /^Timeout\s+\d+$/ }
     its(:content) { should match /^LogLevel\s+Info$/ }
     its(:content) { should match /^upstream\s+internal.example.com:80$/ }
@@ -69,15 +83,9 @@ describe 'tinyproxy class' do
     it { should be_running }
   end
 
-  proc_user = case os[:family]
-         when 'redhat' then 'tinyproxy'
-         when 'debian' then 'nobody'
-         when 'ubuntu' then 'nobody'
-         end
-
   describe process('tinyproxy') do
     it { should be_running }
-    its(:user) { should eq proc_user }
+    its(:user) { should eq user }
   end
 
   describe port(8888) do
