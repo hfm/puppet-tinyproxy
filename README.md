@@ -32,6 +32,8 @@ The tinyproxy module requires the following puppet modules:
 - [puppetlabs-apt](https://forge.puppet.com/puppetlabs/apt) (>= 2.0.0 < 3.0.0) (only Debian-based distributions)
 - [stahnma-epel](https://forge.puppet.com/stahnma/epel) (>= 1.0.0 < 2.0.0) (only RedHat-based distributions)
 
+Both puppetlabs-apt and stahnma-epel are soft dependencies. If you are installing on Debian or RedHat-based systems, you will need to configure appropriate versions of those modules.
+
 ### Beginning with tinyproxy
 
 To install the tinyproxy with default parameters, declare the `tinyproxy` class.
