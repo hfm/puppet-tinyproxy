@@ -44,13 +44,13 @@ describe 'tinyproxy class' do
 
   user = case os[:family]
          when 'redhat' then 'tinyproxy'
-         when 'debian' then 'nobody'
+         when 'debian' then 'tinyproxy'
          when 'ubuntu' then 'nobody'
          end
 
   group = case os[:family]
           when 'redhat' then 'tinyproxy'
-          when 'debian' then 'nogroup'
+          when 'debian' then 'tinyproxy'
           when 'ubuntu' then 'nogroup'
           end
 
