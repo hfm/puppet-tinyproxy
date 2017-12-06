@@ -38,7 +38,7 @@ describe 'tinyproxy class' do
 
   config_path = case os[:family]
                 when 'redhat' then '/etc/tinyproxy/tinyproxy.conf'
-                when 'debian' then '/etc/tinyproxy.conf'
+                when 'debian' then '/etc/tinyproxy/tinyproxy.conf'
                 when 'ubuntu' then '/etc/tinyproxy.conf'
                 end
 
