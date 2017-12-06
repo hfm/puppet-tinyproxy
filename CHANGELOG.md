@@ -1,3 +1,7 @@
+## [v1.2.1](https://github.com/hfm/puppet-tinyproxy/compare/v1.2.0...v1.2.1) (2017-12-07)
+
+* Support debian stretch [#17](https://github.com/hfm/puppet-tinyproxy/pull/17) ([hfm](https://github.com/hfm))
+
 ## [v1.2.0](https://github.com/hfm/puppet-tinyproxy/compare/v1.1.0...v1.2.0) (2017-12-06)
 
 * Remove puppetlabs-apt and stahnma-epel as hard dependencies [#16](https://github.com/hfm/puppet-tinyproxy/pull/16) ([beezly](https://github.com/beezly))
