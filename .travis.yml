@@ -10,7 +10,7 @@ matrix:
     sudo: required
     services: docker
     script: bundle exec rake beaker
-  - env: BEAKER_set=jessie BEAKER_debug=true
+  - env: BEAKER_set=stretch BEAKER_debug=true
     sudo: required
     services: docker
     script: bundle exec rake beaker

@@ -1,6 +1,8 @@
 ---
 version: 5
 hierarchy:
+  - name: "Distro version"
+    path: "%{facts.os.name}%{facts.os.release.major}.yaml"
   - name: "OS family"
     path: "%{facts.os.family}.yaml"
   - name: "Common defaults"
