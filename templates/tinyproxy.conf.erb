@@ -255,11 +255,11 @@ MaxRequestsPerChild <%= @max_requests_per_child %>
 # The order of the controls are important. All incoming connections are
 # tested against the controls based on order.
 #
-<%- if @allow -%>
-Allow <%= @allow %>
+<%- @allow.each do |ip| -%>
+Allow <%= ip %>
 <%- end -%>
-<%- if @deny -%>
-Deny <%= @deny %>
+<%- @deny.each do |ip| -%>
+Deny <%= ip %>
 <%- end -%>
 
 #
