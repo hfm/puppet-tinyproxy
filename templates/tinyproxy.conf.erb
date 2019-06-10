@@ -114,7 +114,11 @@ StatFile "<%= @stat_file %>"
 # and enable the Syslog directive.  These directives are mutually
 # exclusive.
 #
-<%- if @log_file -%>
+<%- if @log_file.nil? and ( @use_syslog.nil? or ! @use_syslog ) -%>
+LogFile "/var/log/tinyproxy/tinyproxy.log"
+<%- elsif @use_syslog -%>
+# LogFile "/var/log/tinyproxy/tinyproxy.log"
+<%- else -%>
 LogFile "<%= @log_file %>"
 <%- end -%>
 
@@ -123,10 +127,10 @@ LogFile "<%= @log_file %>"
 # option must not be enabled if the Logfile directive is being used.
 # These two directives are mutually exclusive.
 #
-<%- if @syslog.nil? -%>
+<%- if @use_syslog.nil? -%>
 #Syslog On
 <%- else -%>
-Syslog <%= @syslog ? 'On' : 'Off' %>
+Syslog <%= @use_syslog ? 'On' : 'Off' %>
 <%- end -%>
 
 #

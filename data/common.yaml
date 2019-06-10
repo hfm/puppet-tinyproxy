@@ -11,8 +11,8 @@ tinyproxy::error_files: null
 tinyproxy::default_error_file: "/usr/share/tinyproxy/default.html"
 tinyproxy::stat_host: null
 tinyproxy::stat_file: "/usr/share/tinyproxy/stats.html"
-tinyproxy::log_file: "/var/log/tinyproxy/tinyproxy.log"
-tinyproxy::use_syslog: false
+tinyproxy::log_file: null
+tinyproxy::use_syslog: null
 tinyproxy::pid_file: "/var/run/tinyproxy/tinyproxy.pid"
 tinyproxy::use_xtinyproxy: false
 tinyproxy::default_upstreams: null
