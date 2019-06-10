@@ -13,7 +13,7 @@ class tinyproxy::config (
   Optional[String] $stat_host,
   String $stat_file,
   Optional[String] $log_file,
-  Boolean $use_syslog,
+  Optional[Boolean] $use_syslog,
   String $pid_file,
   Boolean $use_xtinyproxy,
   Optional[Array[String]] $default_upstreams,
@@ -44,7 +44,7 @@ class tinyproxy::config (
 ){
 
   if $log_file != undef and $use_syslog == true {
-    fail('$use_syslog and $log_logfile are mutually exclusive.')
+    fail('$use_syslog and $log_file are mutually exclusive.')
   }
 
   file { $config_path:

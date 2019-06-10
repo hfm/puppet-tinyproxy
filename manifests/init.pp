@@ -19,7 +19,7 @@ class tinyproxy (
   Optional[String] $stat_host,
   String $stat_file,
   Optional[String] $log_file,
-  Boolean $use_syslog,
+  Optional[Boolean] $use_syslog,
   String $pid_file,
   Boolean $use_xtinyproxy,
   Optional[Array[String]] $default_upstreams,
