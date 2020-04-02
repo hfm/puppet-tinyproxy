@@ -10,8 +10,7 @@ class tinyproxy::install (
       }
     }
     'Debian': {
-      include ::apt
-      require ::apt::update
+      Class['apt::update']  -> Package<| provider == 'apt' |>
     }
     default: {
       fail("Module ${module_name} is not supported on ${facts['os']['family']}")
