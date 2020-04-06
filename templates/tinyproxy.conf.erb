@@ -255,11 +255,11 @@ MaxRequestsPerChild <%= @max_requests_per_child %>
 # The order of the controls are important. All incoming connections are
 # tested against the controls based on order.
 #
-<%- if @allow -%>
-Allow <%= @allow %>
+<%- @allow.each do |ip| -%>
+Allow <%= ip %>
 <%- end -%>
-<%- if @deny -%>
-Deny <%= @deny %>
+<%- @deny.each do |ip| -%>
+Deny <%= ip %>
 <%- end -%>
 
 #
@@ -311,7 +311,7 @@ Filter "<%= @filter %>"
 <%- if @filter_urls.nil? -%>
 #FilterURLs On
 <%- else -%>
-FilterURLs "<%= @filter_urls ? 'On' : 'Off' %>"
+FilterURLs <%= @filter_urls ? 'On' : 'Off' %>
 <%- end -%>
 
 #
@@ -321,7 +321,7 @@ FilterURLs "<%= @filter_urls ? 'On' : 'Off' %>"
 <%- if @filter_extended.nil? -%>
 #FilterExtended On
 <%- else -%>
-FilterExtended "<%= @filter_extended ? 'On' : 'Off' %>"
+FilterExtended <%= @filter_extended ? 'On' : 'Off' %>
 <%- end -%>
 
 #
@@ -330,7 +330,7 @@ FilterExtended "<%= @filter_extended ? 'On' : 'Off' %>"
 <%- if @filter_case_sensitive.nil? -%>
 #FilterCaseSensitive On
 <%- else -%>
-FilterCaseSensitive "<%= @filter_case_sensitive ? 'On' : 'Off' %>"
+FilterCaseSensitive <%= @filter_case_sensitive ? 'On' : 'Off' %>
 <%- end -%>
 
 #
@@ -346,7 +346,7 @@ FilterCaseSensitive "<%= @filter_case_sensitive ? 'On' : 'Off' %>"
 <%- if @filter_default_deny.nil? -%>
 #FilterDefaultDeny Yes
 <%- else -%>
-FilterDefaultDeny "<%= @filter_default_deny ? 'Yes' : 'No' %>"
+FilterDefaultDeny <%= @filter_default_deny ? 'Yes' : 'No' %>
 <%- end -%>
 
 #
